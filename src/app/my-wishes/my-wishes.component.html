@@ -22,4 +22,12 @@
             </div>
         </form>
     </div>
+    <div class="alert alert-success" *ngIf="successfullyAdded">
+        Dodano życzenie
+      </div>
+    <div class="card card-container">
+        <div *ngFor="let wish of wishes">
+            <p>{{ wish.name }}</p>
+        </div>
+    </div>
 </div>

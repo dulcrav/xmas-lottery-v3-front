@@ -1,3 +1,3 @@
 export class NewWish {
-    constructor(userId: number, name: string) {}
+    constructor(public userId: number, public name: string) {}
 }
