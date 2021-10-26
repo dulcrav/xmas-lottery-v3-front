@@ -24,10 +24,17 @@
     </div>
     <div class="alert alert-success" *ngIf="successfullyAdded">
         Dodano życzenie
-      </div>
+    </div>
     <div class="card card-container">
-        <div *ngFor="let wish of wishes">
-            <p>{{ wish.name }}</p>
+        <div *ngFor="let wish of wishes; trackBy: tracker">
+            <div>
+                <p>{{ wish.name }}</p>
+                <button (click)="deleteWish(wish.id)" class="btn btn-danger btn-block">Usuń</button>
+            </div>
+            
         </div>
+    </div>
+    <div class="alert alert-success" *ngIf="successfullyDeleted">
+        Usunięto życzenie
     </div>
 </div>

@@ -37,4 +37,9 @@ export class WishesService {
         let params = new HttpParams().set("userId", userId + "")
         return this.http.get(API_URL + "all", { params: params })
     }
+
+    deleteWish(wishId: number): Observable<any> {
+        let params = new HttpParams().set("wishId", wishId + "");
+        return this.http.delete(API_URL + "delete", { params: params});
+    }
 }

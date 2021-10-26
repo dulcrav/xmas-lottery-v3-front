@@ -14,7 +14,7 @@
       <li class="nav-item">
         <a href="/user" class="nav-link" *ngIf="isLoggedIn" routerLink="user">User</a>
       </li>
-      <li class="nav-item">
+      <li class="nav-item" *ngIf="isLoggedIn">
         <a href="/my-wishes" class="nav-link" routerLink="my-wishes">Moje życzenia</a>
       </li>
     </ul>

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { NewWish } from '../model/new-wish.model';
 import { TokenStorageService } from '../_services/token-storage.service';
 import { WishesService } from '../_services/wishes.service';
@@ -14,11 +14,18 @@ export class MyWishesComponent implements OnInit {
   form: any = {};
   wishes: any[] = [];
   successfullyAdded = false;
+  successfullyDeleted = false;
 
-  constructor(private tokenStorage: TokenStorageService, private wishesService: WishesService) { }
+  constructor(private tokenStorage: TokenStorageService, 
+              private wishesService: WishesService,
+              private changeDetectorRef: ChangeDetectorRef) { }
 
   ngOnInit(): void {
     this.user = this.tokenStorage.getUser();
+    this.fetchWishes();
+  }
+
+  fetchWishes(): void {
     this.wishesService.getWishesByUserId(this.user.id).subscribe(data => {
       this.wishes = data;
     });
@@ -31,8 +38,25 @@ export class MyWishesComponent implements OnInit {
       this.successfullyAdded = true;
       setTimeout(() => {
         this.successfullyAdded = false;
-      }, 3000)
+      }, 3000);
+      this.fetchWishes();
     });
+    
+  }
+
+  deleteWish(id: number) {
+    console.log('Inside deletWish');
+    this.wishesService.deleteWish(id).subscribe(() => {
+      this.successfullyDeleted = true;
+      setTimeout(() => {
+        this.successfullyDeleted = false;
+      }, 3000);
+      this.fetchWishes();
+    });
+  }
+
+  tracker(item, index) {
+    return `${item.id}-${index}`;
   }
 
 }
