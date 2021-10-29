@@ -27,10 +27,11 @@
     </div>
     <div class="card card-container">
         <div *ngFor="let wish of wishes; trackBy: tracker">
-            <div>
-                <p>{{ wish.name }}</p>
-                <button (click)="deleteWish(wish.id)" class="btn btn-danger btn-block">Usuń</button>
+            <div class="col-sm-8">
+                <p class="d-inline-block">{{ wish.name }}</p>
+                <button (click)="deleteWish(wish.id)" class="btn btn-danger float-right">Usuń</button>
             </div>
+            
             
         </div>
     </div>

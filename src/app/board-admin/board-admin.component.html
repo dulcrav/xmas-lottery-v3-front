@@ -6,6 +6,6 @@
     <button (click)="drawLots()" class="btn btn-primary btn-block">Losuj</button>
 
     <div *ngFor="let lot of lots">
-      <p>{{ lot.user }} wylosował(-a) {{ lot.drawnUser }}</p>
+      <p>{{ lot.user.username }} wylosował(-a) {{ lot.drawnUser.username }}</p>
     </div>
 </div>

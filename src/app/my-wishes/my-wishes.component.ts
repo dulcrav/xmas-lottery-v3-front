@@ -32,7 +32,6 @@ export class MyWishesComponent implements OnInit {
   }
 
   onSubmit(): void {
-    console.log('Inside onSubmit()');
     let wish = new NewWish(this.user.id, this.form.wishName);
     this.wishesService.saveWish(wish).subscribe(data => {
       this.successfullyAdded = true;
@@ -45,7 +44,6 @@ export class MyWishesComponent implements OnInit {
   }
 
   deleteWish(id: number) {
-    console.log('Inside deletWish');
     this.wishesService.deleteWish(id).subscribe(() => {
       this.successfullyDeleted = true;
       setTimeout(() => {

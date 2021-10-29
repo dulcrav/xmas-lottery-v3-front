@@ -1,2 +1,11 @@
 <p>board-user works!</p>
-<h1>Wylosowano: {{ drawnUser }}</h1>
+<h1>Wylosowano: {{ drawnUser.username }}</h1>
+
+<button (click)="displayWishes()" class="btn btn-primary">Wyświetl życzenia wylosowanej osoby</button>
+
+<div *ngIf="areDisplayedWishes">
+    <p>Życzenia wylosowanej osoby:</p>
+    <div *ngFor="let wish of wishes">
+        <p>{{ wish.name }}</p>
+    </div>
+</div>
