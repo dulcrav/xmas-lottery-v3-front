@@ -1,5 +1,11 @@
 <div class="container">
-    <header class="jumbotron" *ngFor="let user of content">
+    <header class="" *ngFor="let user of content">
       <p>{{ user.username }}</p>
     </header>
-  </div>
+
+    <button (click)="drawLots()" class="btn btn-primary btn-block">Losuj</button>
+
+    <div *ngFor="let lot of lots">
+      <p>{{ lot.user }} wylosował(-a) {{ lot.drawnUser }}</p>
+    </div>
+</div>
