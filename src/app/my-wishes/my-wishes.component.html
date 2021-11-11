@@ -1,6 +1,6 @@
 <div class="col-md-12">
     <p>User Logged in as: {{ user.username }}, id: {{ user.id }}</p>
-    <div class="card card-container">
+    <div>
         <form 
         name="form"
         (ngSubmit)="f.form.valid && onSubmit()"
@@ -25,16 +25,20 @@
     <div class="alert alert-success" *ngIf="successfullyAdded">
         Dodano życzenie
     </div>
-    <div class="card card-container">
-        <div *ngFor="let wish of wishes; trackBy: tracker">
-            <div class="col-sm-8">
-                <p class="d-inline-block">{{ wish.name }}</p>
-                <button (click)="deleteWish(wish.id)" class="btn btn-danger float-right">Usuń</button>
-            </div>
-            
-            
-        </div>
-    </div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Życzenia</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let wish of wishes">
+                <td>{{ wish.name }}</td>
+                <td><button (click)="deleteWish(wish.id)" class="btn btn-danger float-right">Usuń</button></td>
+            </tr>
+        </tbody>
+    </table>
     <div class="alert alert-success" *ngIf="successfullyDeleted">
         Usunięto życzenie
     </div>
