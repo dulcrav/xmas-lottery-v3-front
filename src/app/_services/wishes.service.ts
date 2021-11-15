@@ -4,7 +4,7 @@ import { Observable, throwError } from "rxjs";
 import { NewWish } from "../model/new-wish.model";
 import { catchError } from 'rxjs/operators'
 
-const API_URL = 'http://localhost:8080/api/xmas/test/wish/';
+const API_URL = 'http://ec2-18-157-160-201.eu-central-1.compute.amazonaws.com:8080/api/xmas/test/wish/';
 
 @Injectable({
     providedIn: 'root'
