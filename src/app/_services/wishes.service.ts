@@ -38,6 +38,10 @@ export class WishesService {
         return this.http.get(API_URL + "all", { params: params })
     }
 
+    getAllWishes(): Observable<any> {
+        return this.http.get(API_URL + 'all-wishes');
+    }
+
     deleteWish(wishId: number): Observable<any> {
         let params = new HttpParams().set("wishId", wishId + "");
         return this.http.delete(API_URL + "delete", { params: params});

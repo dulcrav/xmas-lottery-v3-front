@@ -28,4 +28,19 @@
         </tr>
       </tbody>
     </table>
+
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Osoba</th>
+          <th>Życzenie</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let wish of wishes">
+          <td>{{ wish.username }}</td>
+          <td>{{ wish.name }}</td>
+        </tr>
+      </tbody>
+    </table>
 </div>

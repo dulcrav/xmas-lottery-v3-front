@@ -2,6 +2,7 @@ import { ThrowStmt } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { LotteryService } from '../_services/lottery.service';
 import { UserService } from '../_services/user.service';
+import { WishesService } from '../_services/wishes.service';
 
 @Component({
   selector: 'app-board-admin',
@@ -12,8 +13,11 @@ export class BoardAdminComponent implements OnInit {
 
   content: any;
   lots: any[];
+  wishes: any[];
 
-  constructor(private userService: UserService, private lotteryService: LotteryService) { }
+  constructor(private userService: UserService, 
+              private lotteryService: LotteryService,
+              private wishesService: WishesService) { }
 
   ngOnInit(): void {
     this.userService.getAdminBoard().subscribe(
@@ -25,6 +29,7 @@ export class BoardAdminComponent implements OnInit {
       }
     );
     this.getLots();
+    this.getAllWishes();
   }
 
   drawLots() {
@@ -46,4 +51,13 @@ export class BoardAdminComponent implements OnInit {
       this.lots = JSON.parse(err.error).message;
     }
   )}
+
+  getAllWishes() {
+    this.wishesService.getAllWishes().subscribe(data => {
+      this.wishes = data;
+    },
+    err => {
+      this.wishes = JSON.parse(err.error).message;
+    })
+  }
 }

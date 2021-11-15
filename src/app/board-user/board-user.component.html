@@ -1,6 +1,9 @@
-<h1>Wylosowano: {{ drawnUser.username }}</h1>
+<h1 *ngIf="drawnUser">Wylosowano: {{ drawnUser.username }}</h1>
+<div class="alert alert-success" *ngIf="!drawnUser">
+    Jeszcze nie wylosowano żadnej osoby. Czekamy aż wszyscy się zarejestrują.
+</div>
 
-<button (click)="displayWishes()" class="btn btn-primary">Wyświetl życzenia wylosowanej osoby</button>
+<button (click)="displayWishes()" class="btn btn-primary" *ngIf="drawnUser">Wyświetl życzenia wylosowanej osoby</button>
 
 <div *ngIf="areDisplayedWishes">
     <p>Życzenia wylosowanej osoby:</p>
