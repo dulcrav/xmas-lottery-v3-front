@@ -14,6 +14,7 @@ import { BoardAdminComponent } from './board-admin/board-admin.component';
 import { BoardUserComponent } from './board-user/board-user.component';
 import { authInterceptorProviders } from './_helpers/auth.interceptor';
 import { MyWishesComponent } from './my-wishes/my-wishes.component';
+import { KidsWishesComponent } from './kids-wishes/kids-wishes.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { MyWishesComponent } from './my-wishes/my-wishes.component';
     ProfileComponent,
     BoardAdminComponent,
     BoardUserComponent,
-    MyWishesComponent
+    MyWishesComponent,
+    KidsWishesComponent
   ],
   imports: [
     BrowserModule,

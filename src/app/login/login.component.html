@@ -6,16 +6,18 @@
         (ngSubmit)="f.form.valid && onSubmit()"
         #f="ngForm"
         novalidate
+        autocomplete="off"
       >
         <div class="form-group">
           <label for="username">Username</label>
           <input
-            type="text"
+            type="search"
             class="form-control"
             name="username"
             [(ngModel)]="form.username"
             required
             #username="ngModel"
+            autocomplete="nope"
           />
           <div
             class="alert alert-danger"

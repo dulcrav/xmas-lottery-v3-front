@@ -3,15 +3,19 @@
       <thead>
         <tr>
           <th>Osoby</th>
+          <th></th>
         </tr>
       </thead>
       <tbody>
         <tr *ngFor="let user of content">
           <td>{{ user.username }}</td>
+          <td><button (click)="deleteUser(user.id)" class="btn btn-danger float-right">Usuń</button></td>
         </tr>
       </tbody>
     </table>
-
+    <div class="alert alert-success" *ngIf="successfullyDeleted">
+      Usunięto użytkownika
+    </div>
     <button (click)="drawLots()" class="btn btn-primary btn-block">Losuj</button>
 
     <table class="table">

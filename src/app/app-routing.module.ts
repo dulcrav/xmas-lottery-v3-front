@@ -8,6 +8,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { BoardUserComponent } from './board-user/board-user.component';
 import { BoardAdminComponent } from './board-admin/board-admin.component';
 import { MyWishesComponent } from './my-wishes/my-wishes.component';
+import { KidsWishesComponent } from './kids-wishes/kids-wishes.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -17,6 +18,7 @@ const routes: Routes = [
   { path: 'user', component: BoardUserComponent },
   { path: 'admin', component: BoardAdminComponent },
   { path: 'my-wishes', component: MyWishesComponent },
+  { path: 'kids-wishes', component: KidsWishesComponent },
   { path: '', redirectTo: 'home', pathMatch: 'full' }
 ];
 

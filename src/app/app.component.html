@@ -20,6 +20,9 @@
         <li class="nav-item" *ngIf="isLoggedIn">
           <a href="/my-wishes" class="nav-link" routerLink="my-wishes">Moje życzenia</a>
         </li>
+        <li class="nav-item" *ngIf="isLoggedIn">
+          <a href="/kids-wishes" class="nav-link" routerLink="kids-wishes">Życzenia dzieci</a>
+        </li>
       </ul>
 
       <ul class="navbar-nav ml-auto" *ngIf="!isLoggedIn">

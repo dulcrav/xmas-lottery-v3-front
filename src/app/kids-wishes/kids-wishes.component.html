@@ -7,6 +7,16 @@
         novalidate
         autocomplete="off">
             <div class="form-group">
+                <label for="wish-kidname">Dla kogo</label>
+                <input
+                type="text"
+                class="form-control"
+                name="wish-kidname"
+                [(ngModel)]="form.wishKidName"
+                required
+                #wishKidName="ngModel"
+                autocomplete="nope"
+                />
                 <label for="wish-name">Życzenie</label>
                 <input
                 type="text"
@@ -29,14 +39,16 @@
     <table class="table">
         <thead>
             <tr>
-                <th>Życzenia</th>
+                <th>Dla kogo</th>
+                <th>Życzenie</th>
                 <th></th>
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let wish of wishes">
-                <td>{{ wish.name }}</td>
-                <td><button (click)="deleteWish(wish.id)" class="btn btn-danger float-right">Usuń</button></td>
+            <tr *ngFor="let kidswish of kidsWishes">
+                <td>{{ kidswish.kidName }}</td>
+                <td>{{ kidswish.wish }}</td>
+                <td><button (click)="deleteKidsWish(kidswish.id)" class="btn btn-danger float-right">Usuń</button></td>
             </tr>
         </tbody>
     </table>
