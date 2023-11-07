@@ -16,6 +16,8 @@ export class BoardAdminComponent implements OnInit {
   lots: any[];
   wishes: any[];
   successfullyDeleted = false;
+  successfullyChangedPwd = false;
+  password: string;
 
   constructor(private userService: UserService, 
               private lotteryService: LotteryService,
@@ -72,6 +74,23 @@ export class BoardAdminComponent implements OnInit {
       this.successfullyDeleted = true;
       setTimeout(() => {
         this.successfullyDeleted = false;
+      }, 3000);
+      this.getAllUsers();
+      this.getAllWishes();
+      this.getLots();
+    });
+  }
+
+  onKey(event) {
+    this.password = event.target.value;
+  }
+
+  changePassword(id: number) {
+    let newPassword = new NewPassword(this.password);
+    this.userService.changeUserPassword(id, newPassword).subscribe(() => {
+      this.successfullyChangedPwd = true;
+      setTimeout(() => {
+        this.successfullyChangedPwd = false;
       }, 3000);
       this.getAllUsers();
       this.getAllWishes();

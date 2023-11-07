@@ -4,15 +4,20 @@
         <tr>
           <th>Osoby</th>
           <th></th>
+          <th></th>
         </tr>
       </thead>
       <tbody>
         <tr *ngFor="let user of content">
           <td>{{ user.username }}</td>
+          <td><input (keyup)="onKey($event)" type="text" class="form-control"/><button (click)="changePassword(user.id)" class="btn btn-primary btn-block">Zmień hasło</button></td>
           <td><button (click)="deleteUser(user.id)" class="btn btn-danger float-right">Usuń</button></td>
         </tr>
       </tbody>
     </table>
+    <div class="alert alert-success" *ngIf="successfullyChangedPwd">
+      Zmieniono hasło
+    </div>
     <div class="alert alert-success" *ngIf="successfullyDeleted">
       Usunięto użytkownika
     </div>
