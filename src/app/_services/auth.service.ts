@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
-// const AUTH_API = 'http://ec2-3-74-153-121.eu-central-1.compute.amazonaws.com:8080/api/auth/';
-const AUTH_API = 'http://localhost:8080/api/auth/'
+const AUTH_API = '/api/auth/'
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -17,7 +17,7 @@ export class AuthService {
   constructor(private http: HttpClient) { }
 
   login(credentials): Observable<any> {
-    return this.http.post(AUTH_API + 'signin', {
+    return this.http.post(environment.baseUrl + AUTH_API + 'signin', {
       username: credentials.username,
       password: credentials.password
     }, httpOptions);

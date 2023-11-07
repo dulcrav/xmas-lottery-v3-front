@@ -3,8 +3,9 @@ import { Injectable } from "@angular/core";
 import { Observable, throwError } from "rxjs";
 import { catchError } from 'rxjs/operators'
 import { NewKidsWish } from "../model/new-kidswish.model";
+import { environment } from 'src/environments/environment';
 
-const API_URL = 'http://localhost:8080/api/xmas/test/kidswish/';
+const API_URL = '/api/xmas/test/kidswish/';
 
 @Injectable({
     providedIn: 'root'
@@ -28,17 +29,17 @@ export class KidsWishesService {
     }
 
     saveKidsWish(wish: NewKidsWish): Observable<any> {
-        return this.http.post(API_URL + 'add', wish).pipe(
+        return this.http.post(environment.baseUrl + API_URL + 'add', wish).pipe(
             catchError(this.handleError)
         );
     }
 
     getKidsWishes(): Observable<any> {
-        return this.http.get(API_URL + "all");
+        return this.http.get(environment.baseUrl + API_URL + "all");
     }
 
     deleteKidsWish(wishId: number): Observable<any> {
         let params = new HttpParams().set("wishId", wishId + "");
-        return this.http.delete(API_URL + "delete", { params: params});
+        return this.http.delete(environment.baseUrl + API_URL + "delete", { params: params});
     }
 }

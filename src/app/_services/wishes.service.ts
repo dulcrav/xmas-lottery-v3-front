@@ -2,10 +2,11 @@ import { HttpClient, HttpErrorResponse, HttpParams } from "@angular/common/http"
 import { Injectable } from "@angular/core";
 import { Observable, throwError } from "rxjs";
 import { NewWish } from "../model/new-wish.model";
-import { catchError } from 'rxjs/operators'
+import { catchError } from 'rxjs/operators';
+import { environment } from 'src/environments/environment';
 
-// const API_URL = 'http://ec2-3-74-153-121.eu-central-1.compute.amazonaws.com:8080/api/xmas/test/wish/';
-const API_URL = 'http://localhost:8080/api/xmas/test/wish/';
+
+const API_URL = '/api/xmas/test/wish/';
 
 @Injectable({
     providedIn: 'root'
@@ -29,22 +30,22 @@ export class WishesService {
       }
     
     saveWish(wish: NewWish): Observable<any> {
-        return this.http.post(API_URL + 'add', wish).pipe(
+        return this.http.post(environment.baseUrl + API_URL + 'add', wish).pipe(
             catchError(this.handleError)
         );
     }
 
     getWishesByUserId(userId: number): Observable<any> {
         let params = new HttpParams().set("userId", userId + "")
-        return this.http.get(API_URL + "all", { params: params })
+        return this.http.get(environment.baseUrl + API_URL + "all", { params: params })
     }
 
     getAllWishes(): Observable<any> {
-        return this.http.get(API_URL + 'all-wishes');
+        return this.http.get(environment.baseUrl + API_URL + 'all-wishes');
     }
 
     deleteWish(wishId: number): Observable<any> {
         let params = new HttpParams().set("wishId", wishId + "");
-        return this.http.delete(API_URL + "delete", { params: params});
+        return this.http.delete(environment.baseUrl + API_URL + "delete", { params: params});
     }
 }

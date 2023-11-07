@@ -2,9 +2,9 @@ import { HttpClient, HttpErrorResponse, HttpParams } from "@angular/common/http"
 import { Injectable } from "@angular/core";
 import { Observable, throwError } from "rxjs";
 import { catchError } from "rxjs/operators";
+import { environment } from 'src/environments/environment';
 
-// const API_URL = 'http://ec2-3-74-153-121.eu-central-1.compute.amazonaws.com:8080/xmas/api/lottery/';
-const API_URL = 'http://localhost:8080/xmas/api/lottery/';
+const API_URL = '/xmas/api/lottery/';
 
 @Injectable({
     providedIn: 'root'
@@ -29,17 +29,17 @@ export class LotteryService {
       }
 
     getLots(): Observable<any> {
-        return this.http.get(API_URL);
+        return this.http.get(environment.baseUrl + API_URL);
     }
 
     drawLots(): Observable<any> {
-        return this.http.post(API_URL, null).pipe(
+        return this.http.post(environment.baseUrl + API_URL, null).pipe(
             catchError(this.handleError)
         );
     }
 
     getLotByPlayer(id: number): Observable<any> {
         let params = new HttpParams().set("id", id + "");
-        return this.http.get(API_URL + "result", {params: params});
+        return this.http.get(environment.baseUrl + API_URL + "result", {params: params});
     }
 }
